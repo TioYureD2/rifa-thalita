@@ -81,7 +81,7 @@
         .suspense-animation {
             font-size: 1.5em;
             color: #FF6347;
-            animation: bounce 1s infinite;
+            animation: bounce 2s infinite;
         }
 
         @keyframes bounce {
@@ -96,7 +96,7 @@
 </head>
 <body>
     <div class="container">
-        <img src="https://cdn-icons-png.flaticon.com/512/1674/1674291.png" alt="Bear Icon" class="bear">
+        <img src="https://cdn-icons-png.flaticon.com/512/2174/2174053.png" alt="Bear Icon" class="bear">
         <h1>Sorteio da Rifa da Thalita</h1>
         <p>Clique no botão abaixo para descobrir o número sorteado!</p>
         <a href="#" class="button" onclick="startSuspense(event)">Sortear</a>
@@ -110,77 +110,78 @@
     <script>
         // Substitua a lista abaixo pelos 70 participantes reais
         const participantes = [
-            { numero: 1, nome: "Alcimara", telefone: "+55 21 99625-8227" },
-            { numero: 2, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
-            { numero: 3, nome: "Kathelyn Gomes de Oliveira", telefone: "+55 21 99238-8490" },
-            { numero: 4, nome: "Luiz Ricardo Da Silva (namorado da Tati)", telefone: "" },
-            { numero: 5, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
-            { numero: 6, nome: "Thaisa Machado", telefone: "+55 21 98013-6234" },
-            { numero: 7, nome: "Adriana Medeiros (tia Giu)", telefone: "+55 21 96515-3182" },
-            { numero: 8, nome: "Carla Rangel Manhães", telefone: "+55 22 98874-8796" },
-            { numero: 9, nome: "Adriana Medeiros (tia Giu)", telefone: "+55 21 96515-3182" },
-            { numero: 10, nome: "Kassia de Souza Ramos Machado", telefone: "" },
-            { numero: 11, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
-            { numero: 12, nome: "Laura Martins Modesto", telefone: "+55 21 97036-8025" },
-            { numero: 13, nome: "Kassia de Souza Ramos Machado", telefone: "" },
-            { numero: 14, nome: "Bruna Rodrigues Rodriguez", telefone: "+591 77990348" },
-            { numero: 15, nome: "Carlos Augusto (Guto)", telefone: "" },
-            { numero: 16, nome: "Brendda Carvalho", telefone: "+55 21 96498-6547" },
-            { numero: 17, nome: "Arildo (Índio)", telefone: "+55 21 97827-3743" },
-            { numero: 18, nome: "Letícia Rosa de Oliveira Santos", telefone: "(contato do meu pai)" },
-            { numero: 19, nome: "Letícia Rosa de Oliveira Santos", telefone: "(contato do meu pai)" },
-            { numero: 20, nome: "Brenda Rodrigues Rodriguez", telefone: "+591 69495070" },
-            { numero: 21, nome: "Thaisa Machado", telefone: "+55 21 98013-6234" },
-            { numero: 22, nome: "Leonardo Pereira Martins Junior", telefone: "+55 21 97731-0183" },
-            { numero: 23, nome: "Gabriele Loureiro De Sena", telefone: "+55 21 97317-1424" },
-            { numero: 24, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
-            { numero: 25, nome: "Roberto Carlos", telefone: "" },
-            { numero: 26, nome: "Leonardo Pereira Martins Junior", telefone: "+55 21 97731-0183" },
-            { numero: 27, nome: "Leonardo Pereira Martins Junior", telefone: "+55 21 97731-0183" },
-            { numero: 28, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
-            { numero: 29, nome: "Letícia coelho de oliveira", telefone: "+55 27 99283-2977" },
-            { numero: 30, nome: "Laura Martins Modesto", telefone: "+55 21 97036-8025" },
-            { numero: 31, nome: "Marcelo Henrique Gonzalez", telefone: "+55 45 9969-3813" },
-            { numero: 32, nome: "Ieda (Márcia)", telefone: "+55 21 97149-6290" },
-            { numero: 33, nome: "", telefone: "" },
-            { numero: 34, nome: "Rayane Lopes Barbieri Lace", telefone: "+55 21 96507-3719" },
-            { numero: 35, nome: "Thiago Magno", telefone: "+55 21 97027-1922" },
-            { numero: 36, nome: "Thiago Magno", telefone: "+55 21 97027-1922" },
-            { numero: 37, nome: "Thiago Magno", telefone: "+55 21 97027-1922" },
-            { numero: 38, nome: "Ágatha Christina Machado de Souza", telefone: "+55 21 96605-7583" },
-            { numero: 39, nome: "Brendda Carvalho", telefone: "+55 21 96498-6547" },
-            { numero: 40, nome: "Thaisa Machado", telefone: "+55 21 98013-6234" },
-            { numero: 41, nome: "", telefone: "" },
-            { numero: 42, nome: "", telefone: "" },
-            { numero: 43, nome: "Jaqueline Miranda Mailes", telefone: "+55 21 97317-1424" },
-            { numero: 44, nome: "Nathallys de Souza", telefone: "+55 21 97445-9157" },
-            { numero: 45, nome: "Thiago Magno", telefone: "+55 21 97027-1922" },
-            { numero: 46, nome: "Leonardo Pereira Martins Junior", telefone: "+55 21 97731-0183" },
-            { numero: 47, nome: "Daniela Pereira", telefone: "" },
-            { numero: 48, nome: "Leonardo Pereira Martins Junior", telefone: "+55 21 97731-0183" },
-            { numero: 49, nome: "Carlos Eduardo Soares Almeida", telefone: "+55 21 98836-9085" },
-            { numero: 50, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
-            { numero: 51, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
-            { numero: 52, nome: "Cristiane Costa", telefone: "+55 21 97689-6547" },
-            { numero: 53, nome: "Tatiane Elvira da Silva", telefone: "+55 21 99455-2542" },
-            { numero: 54, nome: "Beatriz Pereira", telefone: "+55 21 97145-2568" },
-            { numero: 55, nome: "Tatiane Elvira da Silva", telefone: "+55 21 99455-2542" },
-            { numero: 56, nome: "Raiane Barbosa", telefone: "+55 21 98645-2008" },
-            { numero: 57, nome: "Larissa Pereira dos Santos", telefone: "+55 21 98962-3121" },
-            { numero: 58, nome: "Liza Karla", telefone: "+55 21 96555-2215" },
-            { numero: 59, nome: "Paola Ferreira Maciel", telefone: "+55 21 97050-7684" },
-            { numero: 60, nome: "Paola Ferreira Maciel", telefone: "+55 21 97050-7684" },
-            { numero: 61, nome: "Luana Souza Lopes", telefone: "+55 21 96829-4519" },
-            { numero: 62, nome: "Jaqueline Miranda Mailes", telefone: "+55 21 97317-1424" },
-            { numero: 63, nome: "Gláucia Maria", telefone: "+55 21 98629-1246" },
-            { numero: 64, nome: "Karla Silva", telefone: "+55 21 98629-4574" },
-            { numero: 65, nome: "Marcos Oliveira Silva", telefone: "+55 21 98127-9265" },
-            { numero: 66, nome: "Marcos Oliveira Silva", telefone: "+55 21 98127-9265" },
-            { numero: 67, nome: "Eduardo Melo", telefone: "+55 21 98172-8753" },
-            { numero: 68, nome: "Denise Costa", telefone: "+55 21 98050-1952" },
-            { numero: 69, nome: "Nathalia Barbosa", telefone: "+55 21 98941-7421" },
-            { numero: 70, nome: "Carla Costa Lima", telefone: "+55 21 97320-3791" }
-        ];
+    { numero: 1, nome: "Alcimara", telefone: "+55 21 99625-8227" },
+    { numero: 2, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
+    { numero: 3, nome: "Kathelyn Gomes de Oliveira", telefone: "+55 21 99238-8490" },
+    { numero: 4, nome: "Luiz Ricardo Da Silva (namorado da Tati)" },
+    { numero: 5, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
+    { numero: 6, nome: "Thaisa Machado", telefone: "+55 21 98013-6234" },
+    { numero: 7, nome: "Adriana Medeiros (tia Giu)", telefone: "+55 21 96515-3182" },
+    { numero: 8, nome: "Carla Rangel Manhães", telefone: "+55 22 98874-8796" },
+    { numero: 9, nome: "Adriana Medeiros (tia Giu)", telefone: "+55 21 96515-3182" },
+    { numero: 10, nome: "Kassia de Souza Ramos Machado" },
+    { numero: 11, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
+    { numero: 12, nome: "Laura Martins Modesto", telefone: "+55 21 97036-8025" },
+    { numero: 13, nome: "Kassia de Souza Ramos Machado" },
+    { numero: 14, nome: "Bruna Rodrigues Rodriguez", telefone: "+591 77990348" },
+    { numero: 15, nome: "Carlos Augusto (Guto)" },
+    { numero: 16, nome: "Brendda Carvalho", telefone: "+55 21 96498-6547" },
+    { numero: 17, nome: "Arildo (Índio)", telefone: "+55 21 97827-3743" },
+    { numero: 18, nome: "Letícia Rosa de Oliveira Santos" },
+    { numero: 19, nome: "Letícia Rosa de Oliveira Santos" },
+    { numero: 20, nome: "Brenda Rodrigues Rodriguez", telefone: "+591 69495070" },
+    { numero: 21, nome: "Thaisa Machado", telefone: "+55 21 98013-6234" },
+    { numero: 22, nome: "Leonardo Pereira Martins Junior", telefone: "+55 21 97731-0183" },
+    { numero: 23, nome: "Gabriele Loureiro De Sena", telefone: "+55 21 97317-1424" },
+    { numero: 24, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
+    { numero: 25, nome: "Roberto Carlos" },
+    { numero: 26, nome: "Leonardo Pereira Martins Junior", telefone: "+55 21 97731-0183" },
+    { numero: 27, nome: "Leonardo Pereira Martins Junior", telefone: "+55 21 97731-0183" },
+    { numero: 28, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
+    { numero: 29, nome: "Letícia Coelho de Oliveira", telefone: "+55 27 99283-2977" },
+    { numero: 30, nome: "Laura Martins Modesto", telefone: "+55 21 97036-8025" },
+    { numero: 31, nome: "Marcelo Henrique Gonzalez", telefone: "+55 45 9969-3813" },
+    { numero: 32, nome: "Ieda (Márcia)", telefone: "+55 21 97149-6290" },
+    { numero: 33, nome: "Marcelo Medeiros Teixeira", telefone: "21985307968" },
+    { numero: 34, nome: "Rayane Lopes Barbieri Lace", telefone: "+55 21 96507-3719" },
+    { numero: 35, nome: "Thiago Magno", telefone: "+55 21 97027-1922" },
+    { numero: 36, nome: "Thiago Magno", telefone: "+55 21 97027-1922" },
+    { numero: 37, nome: "Thiago Magno", telefone: "+55 21 97027-1922" },
+    { numero: 38, nome: "Ágatha Christina Machado de Souza", telefone: "+55 21 96605-7583" },
+    { numero: 39, nome: "Brendda Carvalho", telefone: "+55 21 96498-6547" },
+    { numero: 40, nome: "Thaisa Machado", telefone: "+55 21 98013-6234" },
+    { numero: 41, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
+    { numero: 42, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
+    { numero: 43, nome: "Jaqueline Miranda Mailes", telefone: "+55 21 97317-1424" },
+    { numero: 44, nome: "Mariza de Oliveira Gomes Vieira", telefone: "+55 21 96605-7583" },
+    { numero: 45, nome: "Stheffany Vitória" },
+    { numero: 46, nome: "Stheffany Vitória" },
+    { numero: 47, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
+    { numero: 48, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
+    { numero: 49, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
+    { numero: 50, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
+    { numero: 51, nome: "Fabiana Ferreira Fernandes", telefone: "+55 21 96534-2947" },
+    { numero: 52, nome: "Marcelo Medeiros Teixeira", telefone: "21985307968" },
+    { numero: 53, nome: "Marcelo Medeiros Teixeira", telefone: "21985307968" },
+    { numero: 54, nome: "Dilcea Medeiros", telefone: "+55 21 98998-8682" },
+    { numero: 55, nome: "Sarah Ramos", telefone: "+55 21 97317-1424" },
+    { numero: 56, nome: "Marcelo Medeiros Teixeira", telefone: "21985307968" },
+    { numero: 57, nome: "Marcelo Medeiros Teixeira", telefone: "21985307968" },
+    { numero: 58, nome: "Marcelo Medeiros Teixeira", telefone: "21985307968" },
+    { numero: 59, nome: "Marcelo Medeiros Teixeira", telefone: "21985307968" },
+    { numero: 60, nome: "Marcelo Henrique Gonzalez", telefone: "+55 45 9969-3813" },
+    { numero: 61, nome: "Marcelo Medeiros Teixeira", telefone: "21985307968" },
+    { numero: 62, nome: "Marcelo Medeiros Teixeira", telefone: "21985307968" },
+    { numero: 63, nome: "Marcelo Medeiros Teixeira", telefone: "21985307968" },
+    { numero: 64, nome: "Thaís Souza Moscon", telefone: "+55 21 96630-5628" },
+    { numero: 65, nome: "Thaís Souza Moscon", telefone: "+55 21 96630-5628" },
+    { numero: 66, nome: "Thaís Souza Moscon", telefone: "+55 21 96630-5628" },
+    { numero: 67, nome: "Ramirez Gomes De Larroque", telefone: "21988645865" },
+    { numero: 68, nome: "Ramirez Gomes De Larroque", telefone: "21988645865" },
+    { numero: 69, nome: "Paulo Rodrigues Oliveira Coelho", telefone: "+55 27 99283-2977" },
+    { numero: 70, nome: "Dilcea Medeiros", telefone: "+55 21 98998-8682" }
+];
+
 
         function startSuspense(event) {
             event.preventDefault();
@@ -188,7 +189,7 @@
             // Exibe o suspense
             document.querySelector('.suspense').style.display = 'block';
 
-            // Depois de 3 segundos, escolhe o vencedor aleatoriamente
+            // Depois de 20 segundos, escolhe o vencedor aleatoriamente
             setTimeout(() => {
                 const winner = participantes[Math.floor(Math.random() * participantes.length)];
 
@@ -200,7 +201,7 @@
                 // Exibe o resultado
                 document.querySelectorAll('.result').forEach(result => result.style.display = 'block');
                 document.querySelectorAll('.suspense').forEach(suspense => suspense.style.display = 'none');
-            }, 3000); // Espera 3 segundos
+            }, 20000); // Espera 3 segundos
         }
     </script>
 </body>
