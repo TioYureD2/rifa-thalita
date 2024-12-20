@@ -1,18 +1,165 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Sorteio da Rifa</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorteio da Rifa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    #sorteio {
+      margin: 50px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+    }
+
+    #resultado {
+      margin: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      color: #444;
+    }
+
+    #sorteioButton {
+      background-color: #ff5722;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    #sorteioButton:hover {
+      background-color: #e64a19;
+    }
+
+    .blink {
+      animation: blink 0.8s infinite alternate;
+    }
+
+    @keyframes blink {
+      from {
+        color: #ff5722;
+      }
+      to {
+        color: #e91e63;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Sorteio da Rifa da Thali 💖</h1>
-        <p>Clique no botão para sortear</p>
-        <button id="botaoSortear">Sortear Número</button>
-        <div id="resultado"></div>
-    </div>
-    <script src="script.js" defer></script>
+  <div id="sorteio">
+    <h1>Sorteio da Rifa</h1>
+    <div id="resultado">Clique para iniciar o sorteio!</div>
+    <button id="sorteioButton">Sortear</button>
+  </div>
+
+  <script>
+    const participantes = [
+  { numero: 1, nome: "Alcimara", telefone: "+55 21 99625-8227" },
+  { numero: 2, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
+  { numero: 3, nome: "Kathelyn Gomes de Oliveira", telefone: "+55 21 99238-8490" },
+  { numero: 4, nome: "Luiz Ricardo Da Silva (namorado da Tati)", telefone: "Pagamento confirmado" },
+  { numero: 5, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
+  { numero: 6, nome: "Thaisa Machado", telefone: "+55 21 98013-6234 (pendente)" },
+  { numero: 7, nome: "Adriana Medeiros (tia Giu)", telefone: "+55 21 96515-3182" },
+  { numero: 8, nome: "Carla Rangel Manhães", telefone: "+55 22 98874-8796" },
+  { numero: 9, nome: "Adriana Medeiros (tia Giu)", telefone: "+55 21 96515-3182" },
+  { numero: 10, nome: "Kassia de Souza Ramos Machado", telefone: "Pagamento confirmado" },
+  { numero: 11, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
+  { numero: 12, nome: "Laura Martins Modesto", telefone: "+55 21 97036-8025" },
+  { numero: 13, nome: "Kassia de Souza Ramos Machado", telefone: "Pagamento confirmado" },
+  { numero: 14, nome: "Bruna Rodrigues Rodriguez", telefone: "+591 77990348" },
+  { numero: 15, nome: "Carlos Augusto (Guto)", telefone: "Pagamento pendente" },
+  { numero: 16, nome: "Brendda Carvalho", telefone: "+55 21 96498-6547" },
+  { numero: 17, nome: "Arildo (Índio)", telefone: "+55 21 97827-3743 (pendente)" },
+  { numero: 18, nome: "Letícia Rosa de Oliveira Santos", telefone: "(contato do pai)" },
+  { numero: 19, nome: "Letícia Rosa de Oliveira Santos", telefone: "(contato do pai)" },
+  { numero: 20, nome: "Brenda Rodrigues Rodriguez", telefone: "+591 69495070" },
+  { numero: 21, nome: "Thaisa Machado", telefone: "+55 21 98013-6234 (pendente)" },
+  { numero: 22, nome: "Leonardo Pereira Martins Junior", telefone: "+55 21 97731-0183" },
+  { numero: 25, nome: "Roberto Carlos", telefone: "Pagamento confirmado" },
+  { numero: 26, nome: "Leonardo Pereira Martins Junior", telefone: "+55 21 97731-0183" },
+  { numero: 27, nome: "Leonardo Pereira Martins Junior", telefone: "+55 21 97731-0183" },
+  { numero: 28, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
+  { numero: 29, nome: "Letícia Coelho de Oliveira", telefone: "+55 27 99283-2977" },
+  { numero: 30, nome: "Laura Martins Modesto", telefone: "+55 21 97036-8025" },
+  { numero: 31, nome: "Marcelo Henrique Gonzalez", telefone: "+55 45 9969-3813" },
+  { numero: 32, nome: "Ieda (Márcia)", telefone: "+55 21 97149-6290 (pendente)" },
+  { numero: 34, nome: "Rayane Lopes Barbieri Lace", telefone: "+55 21 96507-3719" },
+  { numero: 35, nome: "Thiago Magno", telefone: "+55 21 97027-1922" },
+  { numero: 36, nome: "Thiago Magno", telefone: "+55 21 97027-1922" },
+  { numero: 37, nome: "Thiago Magno", telefone: "+55 21 97027-1922" },
+  { numero: 38, nome: "Ágatha Christina Machado de Souza", telefone: "+55 21 96605-7583" },
+  { numero: 39, nome: "Brendda Carvalho", telefone: "+55 21 96498-6547" },
+  { numero: 40, nome: "Thaisa Machado", telefone: "+55 21 98013-6234 (pendente)" },
+  { numero: 44, nome: "Mariza de Oliveira Gomes Vieira", telefone: "+55 21 96605-7583" },
+  { numero: 45, nome: "Stheffany Vitória", telefone: "@vihhh_rocha" },
+  { numero: 46, nome: "Stheffany Vitória", telefone: "@vihhh_rocha" },
+  { numero: 48, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
+  { numero: 49, nome: "Tatiana Elvira da Silva", telefone: "+55 21 99455-2542" },
+  { numero: 54, nome: "Dilcea Medeiros", telefone: "+55 21 98998-8682" },
+  { numero: 60, nome: "Marcelo Henrique Gonzalez", telefone: "+55 45 9969-3813" },
+  { numero: 64, nome: "Thaís Souza Moscon", telefone: "+55 21 96630-5628" },
+  { numero: 65, nome: "Thaís Souza Moscon", telefone: "+55 21 96630-5628" },
+  { numero: 66, nome: "Thaís Souza Moscon", telefone: "+55 21 96630-5628" },
+  { numero: 67, nome: "Ramirez Gomes De Larroque", telefone: "+55 21 98864-5865" },
+  { numero: 68, nome: "Ramirez Gomes De Larroque", telefone: "+55 21 98864-5865" },
+  { numero: 69, nome: "Paulo Rodrigues Oliveira Coelho", telefone: "+55 27 99283-2977" },
+  { numero: 70, nome: "Dilcea Medeiros", telefone: "+55 21 98998-8682" },
+];
+
+
+    document.getElementById('sorteioButton').addEventListener('click', () => {
+      const resultadoDiv = document.getElementById('resultado');
+      const button = document.getElementById('sorteioButton');
+      button.disabled = true;
+
+      let suspenseInterval;
+      let count = 0;
+
+      // Mensagens engraçadas
+      const mensagens = [
+        "Misturando os números... 🎲",
+        "Tirando poeira da sorte... 🧹",
+        "Quem será o sortudo? 🤔",
+        "Consultando os astros... 🔮",
+        "Quase lá! 🎉"
+      ];
+
+      // Animação de suspense (números aleatórios piscando)
+      suspenseInterval = setInterval(() => {
+        const randomNum = Math.floor(Math.random() * participantes.length) + 1;
+        resultadoDiv.textContent = `Número: ${randomNum}`;
+        resultadoDiv.classList.toggle('blink');
+
+        if (count < mensagens.length) {
+          resultadoDiv.textContent = mensagens[count];
+          count++;
+        }
+      }, 5000); // Troca de mensagem a cada 1s
+
+      // Após 5 segundos, mostra o resultado
+      setTimeout(() => {
+        clearInterval(suspenseInterval);
+        const vencedor = participantes[Math.floor(Math.random() * participantes.length)];
+        resultadoDiv.textContent = `🎉 O número sorteado foi ${vencedor.numero}!\nNome: ${vencedor.nome}\nTelefone: ${vencedor.telefone}`;
+        resultadoDiv.classList.remove('blink');
+        button.disabled = false;
+      }, 30000); // Suspense total de 6 segundos
+    });
+  </script>
 </body>
 </html>
