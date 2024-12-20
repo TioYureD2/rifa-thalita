@@ -135,7 +135,7 @@
         "Misturando os números... 🎲",
         "Tirando poeira da sorte... 🧹",
         "Quem será o sortudo? 🤔",
-        "Consultando os astros... 🔮",
+        "Se investigar bem, tem esquema de aposta... 👀",
         "Quase lá! 🎉"
       ];
 
@@ -155,7 +155,7 @@
       setTimeout(() => {
         clearInterval(suspenseInterval);
         const vencedor = participantes[Math.floor(Math.random() * participantes.length)];
-        resultadoDiv.textContent = `🎉 O número sorteado foi ${vencedor.numero}!\nNome: ${vencedor.nome}\nTelefone: ${vencedor.telefone}`;
+        resultadoDiv.textContent = `🎉 O número sorteado foi ${vencedor.numero}! \n\n Nome: ${vencedor.nome} \n\n Telefone: ${vencedor.telefone}`;
         resultadoDiv.classList.remove('blink');
         button.disabled = false;
       }, 30000); // Suspense total de 6 segundos
